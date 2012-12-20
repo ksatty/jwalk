@@ -142,6 +142,16 @@ jwalk obj{8} / $ keys
   'engine' ]
 ```
 
+## Flatten
+
+Prints out JSON on a single line for easy copy
+
+```
+jwalk obj{8} / $ flatten
+
+{"name":"jwalk","version":"0.0.4","description":"command-line json inspector","preferGlobal":"true","repositories":{"type":"git","url":"http://github.com/nkohari/jwalk"},"bin":{"jwalk":"bin/jwalk"},"dependencies":{"coffee-script":"1.4.0","colors":"0.6.0-1","filesize":"1.6.6","underscore":"1.4.2"},"engine":"node >= 0.8.x"}
+```
+
 ### Quit
 
 Exits the jwalk application
