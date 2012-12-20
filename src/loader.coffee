@@ -3,6 +3,7 @@
 fs = require 'fs'
 path = require 'path'
 zlib = require 'zlib'
+request = require 'request'
 
 filesize = require 'filesize'
 
@@ -11,7 +12,7 @@ CLEAR = '\u001B[A\u001B[2K'
 updateLoadingDisplay = (loaded, done) ->
 	console.log "#{CLEAR} #{if done then '├' else '└'} size in RAM:  #{filesize(loaded)}"
 
-parse = (json, callback) ->
+exports.parse = parse = (json, callback) ->
 	console.log " └ parsing..."
 	start   = Date.now()
 	tree    = JSON.parse(json)
@@ -44,3 +45,13 @@ exports.load = (filename, callback) ->
 	readStream.on 'end', ->
 		updateLoadingDisplay(json.length, true)
 		parse(json, callback)
+
+exports.getURL = (url, callback) ->
+
+	console.log "Getting from: " + url
+
+	request.get url, (err, res, body) ->
+		if (err)
+			callback(err)
+		else
+			parse(body, callback)
