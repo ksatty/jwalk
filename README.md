@@ -22,6 +22,18 @@ It can also handle gzipped files. If the extension is .gz, it will decompress th
 jwalk somefile.json.gz
 ```
 
+...and raw json data.
+
+```
+jwalk -j '{"some":"json"}'
+```
+
+...and remote json url.
+
+```
+jwalk -u http://some.domain.com/file.json
+```
+
 ## Possible Commands
 
 Given the following json file

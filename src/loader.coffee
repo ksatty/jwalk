@@ -50,7 +50,7 @@ exports.getURL = (url, callback) ->
 
 	console.log "Getting from: " + url
 
-	request.get url, (err, res, body) ->
+	request {"url": url,"headers": {"Accept": "application/json"}}, (err, res, body) ->
 		if (err)
 			callback(err)
 		else
